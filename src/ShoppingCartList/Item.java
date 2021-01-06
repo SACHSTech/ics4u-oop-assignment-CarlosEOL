@@ -55,6 +55,10 @@ public class Item extends ShoppingCart{
     return intPrice;
   }
 
+  public String getItem() {
+    return "Item name: " + strName + " | Item Type: " + strType + " | Item price: $" + intPrice + " | Item Quantity: " + intNum;
+  }
+
   //Setter methods
   public void setName(String Name) {
     this.strName = Name;
@@ -70,4 +74,9 @@ public class Item extends ShoppingCart{
     this.intNum = Quantity;
     System.out.print("Quantity set to: " + intNum);
   }
+
+  public void buyNow(boolean ) {
+    
+  }
+  //Additional setter methods to work with other 
 }
