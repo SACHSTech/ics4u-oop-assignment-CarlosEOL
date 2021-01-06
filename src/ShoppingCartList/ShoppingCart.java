@@ -1,19 +1,15 @@
-import java.io.*;
+package ShoppingCartList;
 
-/**
-  * The main program to run to test out if all methods works with each other.
-  **/
+/*
+ *The parent method of items.
+ */
 
 public class ShoppingCart{
 
-  public static void main (String[] args)  throws Exceptions {
-
-    //Creating a new object for new Shopping cart list, it's auto
-    Item item = new Item();
-
-    item.getName();
-
-    
-
-  }
+  int intTotalItems; // 
+  double intCost; // part of the cost calculation
+  double intTax; // part of the cost calculation
+  String[] strItemList; // Used to list the items
+  
+  
 }

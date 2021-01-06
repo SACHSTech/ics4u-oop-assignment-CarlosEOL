@@ -1,2 +1,2 @@
 language = "java10"
-run = "javac -d bin src/ShoppingCartList/Item.java; javac -d bin -sourcepath src -classpath lib/junit-platform-console-standalone-1.7.0-M1.jar src/ShoppingCartList/ShoppingCart.java; java -jar lib/junit-platform-console-standalone-1.7.0-M1.jar --class-path bin -c ShoppingCartList.ShoppingCart"
+run = "javac -cp bin -d bin src/ShoppingCartList/*.java; java -cp bin ShoppingCartList.main"
