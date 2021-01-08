@@ -6,4 +6,15 @@
 *Insert Class Diagram here*  
 
 ## Summary
-*Include a brief summary that describes your system that your are modelling*
+A shopping cart list with the ability to edit and read the Product.txt and the ShoppingCart.txt.
+
+### Item.java
+It sort up all the required information for each
+
+### ShoppingCart.java 
+It has the ability to read the ShoppingCart.txt to see any Items that are selected to be in the ShoppingCart. It contains the variable that can be used by items, such as: buyNow, isInCart and intCost.
+
+It is use to calculate the totalCost of all the items in the shopping cart and taxation, to print them out in the main.java.
+
+### Products.java
+It has the ability to add new Items into Product.txt.
