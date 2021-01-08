@@ -3,7 +3,8 @@
 
 [*see instructions for details*](Instructions.md)
 
-*Insert Class Diagram here*  
+*Insert Class Diagram here*
+
 
 ## Summary
 A shopping cart list with the ability to edit and read the Product.txt and the ShoppingCart.txt.
@@ -17,4 +18,9 @@ It has the ability to read the ShoppingCart.txt to see any Items that are select
 It is use to calculate the totalCost of all the items in the shopping cart and taxation, to print them out in the main.java.
 
 ### Products.java
-It has the ability to add new Items into Product.txt.
+It has the ability to add new Items into Product.txt - discarded idea (Can not do fileWrite on a non-main file which isn't declared to be thrown)
+
+It is used to seperate cart items and available items.
+
+### main.java
+It is use to test and run all the commands that are made in the objects.

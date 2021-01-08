@@ -72,6 +72,10 @@ public class Item extends ShoppingCart{
     return dblPrice;
   }
 
+  public double getPriceAll() {
+    return dblPrice * intNum;
+  }
+
   public boolean isInCart() {
     return isInCart;
   }
@@ -83,17 +87,14 @@ public class Item extends ShoppingCart{
   //Setter methods
   public void setName(String Name) { //setName
     this.strName = Name;
-    System.out.print("Name set to: " + strName);
   }
 
   public void setPrice(int Price) { //setPrice
     this.dblPrice = Price;
-    System.out.print("Price set to: " + dblPrice);
   }
 
   public void setQuantity(int Quantity) { //setQuantity
     this.intNum = Quantity;
-    System.out.print("Quantity set to: " + intNum);
   }
 
   //Additional setter methods to work with ShoppingCart/main
@@ -103,11 +104,5 @@ public class Item extends ShoppingCart{
 
   public void setTotalItem() { // setTotalQuantity in ShoppingCart
     this.intTotalItems = this.intTotalItems + intNum;
-  }
-
-  public void addToCart() {
-    if (isInCart = true) {
-
-    } // set isInCart
   }
 }

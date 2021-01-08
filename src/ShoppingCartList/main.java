@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
   * The main program to run to test out if all methods works with each other.
   * This he main program that perform the task like printing out in-cart items and checkout.
-  * also, I know I can just use array objects to create Products, but I want it to be txt because I can edit it, test it after something changes. Also it will grant me a bigger feeling of accomplishment.
+  * also, I know I can just use array objects to create Products, but I want it to be txt because I can edit it, test it after something changes. Also it will grant me a bigger feeling of accomplishment, yep, the feels.
  **/
 
 public class main {
@@ -25,6 +25,8 @@ public class main {
     double dblPrice;
     int intProducts = 0;
     int intSelectedItem = 0;
+    int intNumberOfItems;
+    double dblTotal = 0;
 
 
     BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
@@ -32,6 +34,10 @@ public class main {
     //*reading the product.txt to find available products and print them
     FileReader products = new FileReader("src/ShoppingCartList/Products.txt");
     Scanner reader = new Scanner(products);
+
+    // ShoppingCartListCreator
+    File ShoppingCartList = new File("src/ShoppingCartList/ShoppingCartList.txt");
+    ShoppingCartList.delete(); 
     
     //Starting Scanner
     while (reader.hasNext() == true) {
@@ -81,11 +87,13 @@ public class main {
     reader.close();
     products.close();
 
-    boolean isShopping = true;
+    System.out.print("How many things do you want to buy?"); //set buy amount
+    intNumberOfItems = Integer.parseInt(keyboard.readLine());
+
+    Item[] item = new Item[intNumberOfItems];
+
     // Start of the user input
-    while (isShopping == true) {
-      
-      File ShoppingCartList = new File("ShoppingCartList/ShoppingCartList.txt"); // ShoppingCartListCreator
+    for (int intCountMain = 0; intCountMain < intNumberOfItems; intCountMain++) {
 
       boolean addingItems = true; //toggle addingItems
       //Add Items
@@ -102,8 +110,9 @@ public class main {
 
             if (product[intCount].availability() == false) {
               System.out.println("The product is not available! Try again!");
-              addingItems = false; //the product is not available
+              addingItems = true; //the product is not available
             }else{
+              addingItems = false; // the item is available
               intSelectedItem = intCount; // Select the Item
             }
           }else if (strName != (product[intProducts - 1].getName())){
@@ -124,19 +133,40 @@ public class main {
         }else if (intNum == 0) {
           System.out.println("Nope! You gotta buy at least 1");
         }else{
+          product[intSelectedItem].setQuantity(intNum);
           isQuantity = false;
         }
       }
+      
+      // Save into txt file to see what's saved
+      FileWriter listWriter = new FileWriter(ShoppingCartList, true);
 
       //Write into File
-      FileWriter listWriter = new FileWriter("ShoppingCartList.txt");
-      listWriter.write("asd");
-      
+      listWriter.write(product[intSelectedItem].getName()); // name
+      listWriter.write("\r\n" + product[intSelectedItem].getType()); //type
+      listWriter.write("\r\n" + Double.toString(product[intSelectedItem].getPrice())); //price
+      listWriter.write("\r\n" + Integer.toString(product[intSelectedItem].getQuantity()) + "\r\n"); // quantity
 
       listWriter.close();
+
+      //save into object item
+      item[intCountMain] = new Item(product[intSelectedItem].getName(), product[intSelectedItem].getType(), product[intSelectedItem].getQuantity(), product[intSelectedItem].getPrice());
+    }
+
+    //Creating a new object for checkout
+    System.out.println("");
+    System.out.println("");
+    System.out.println("SHOPPING CART LIST");
+    System.out.println("");
+
+    for (int intCount = 0; intCount < intNumberOfItems; intCount++) {
+      System.out.println((intCount + 1) + ". " + item[intCount].getItem());
+      dblTotal = dblTotal + item[intCount].getPriceAll();
     }
     
-    //Creating a new object for new Shopping cart list
-
+    System.out.println("");
+    System.out.println("Untaxed Total: " + dblTotal);
+    System.out.println("GST/HST: 15%");
+    System.out.println("Total: " + (dblTotal + (dblTotal * 0.15)));
   }
 }
