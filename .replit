@@ -1,1 +1,4 @@
 language = "java10"
+run = "javac -cp bin -d bin src/ShoppingCartList/*.java; java -cp bin ShoppingCartList.main"
+
+# javac -d cp -d src/oop/main.java; javac -d cp -d bin src/oop/student.java (Alex Meng)
